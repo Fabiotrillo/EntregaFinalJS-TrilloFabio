@@ -1,0 +1,44 @@
+
+/*reset*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+
+
+
+//import
+@import "html/header";
+@import "html/main";
+@import "html/footer";
+@import "extra/vars";
+@import "extra/mixin";
+@import "extra/extend";
+
+/*estilos generales*/
+    body{
+    height: 100vh !important;
+    font-family: 'Castoro Titling', cursive;
+    font-family: 'Roboto', sans-serif;
+    background-image: $color-bg-principal;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+ }
+
+
+ .logo{
+    color: $color-texto-terciario;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 800;
+ }
+
+
+

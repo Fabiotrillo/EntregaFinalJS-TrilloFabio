@@ -1,0 +1,44 @@
+//mixins
+
+//flex
+
+    @mixin flex{
+    display: flex;
+    justify-content: space-around;
+    align-items: end;
+}
+    //ajuste de medidas para imagenes
+
+    @mixin ajustarImagen($of, $w, $h) {
+        object-fit: $of;
+        width: $w;
+        height: $h;
+    }
+
+    @mixin grid ( $col, $espacio ){
+        display: grid;
+        grid-template-columns: repeat($col, 1fr);
+        grid-gap: $espacio;
+
+        //mediaquerie grid
+        @media screen and(max-width: 540px){
+            grid-template-columns: 1fr;
+            gap:0;
+        }
+        @media screen and(max-width: 800px){
+            grid-template-columns: 2fr;
+            gap:0;
+        }
+    }
+
+
+    //mediaqueries
+
+    @mixin responsive ($medida: 480px) {
+        @media screen and(max-width: $medida) {
+           @content
+    
+        }
+     }
+    
+   
