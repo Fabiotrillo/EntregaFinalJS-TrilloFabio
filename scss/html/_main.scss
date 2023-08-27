@@ -1,239 +1,205 @@
 /*main */
-
 main{
     
-     //HTML index
+    //HTML index
 
-     .titulo-index{
-        text-align: justify;
-        margin-left: 10%;
-        text-transform: uppercase;
-        font-weight: 700;
-        @include responsive(400px){
-            text-align: center;
-          
-        };
-        @include responsive(600px){
-            text-align: center;
-          
-        };
-        
-     }
-     .parrafo-descriptivo{
-        width: 400px;
-        margin-left: 10%;
-        font-weight: 400;
-        font-size: 1.2rem;
-        color: $color-texto-principal;
+    .titulo-index{
+       text-align: justify;
+       margin-left: 10%;
+       text-transform: uppercase;
+       font-weight: 700;
+       @include responsive(500px){
+           text-align: center;
+       };
        
-        @include responsive(600px){
-            text-align: center;
-            font-size:1.4rem;
-            
-        };
-     }
-
-
-    .contenedor-img{
-        height: 60vh;
-        
     }
-   .imagen-principal{
-    object-fit: cover;
-    height: 500px;
-    position: relative;
-    left: 30%;
-    bottom: 40%; }
-
-
-    
-    @include responsive(400px){
-        width: 200px;
-        height:200px;
-        top: 10%;
-        left: 0%;
-        
-        
-    };
-    @include responsive(600px){
-        width: 200px;
-        height:200px;
-        top: 10%;
-        left: 6%;
-        
-        
-    };
-
-    @include responsive(800px){
-        width: 350px;
-        height: 300px;
-        top: 10%;
+    .parrafo-descriptivo{
+       width: 400px;
+       margin-left: 10%;
+       font-weight: 400;
+       font-size: 1.2rem;
+       color: $color-texto-principal;
+       @include responsive(500px){
+           text-align: center;
+       };
     }
-    
-    @include responsive(1024px){
-        width: 450px;
-        height: 300px;
-        top: 20%;
-    }
+
+
+   .contenedor-img{
+       height: 60vh;
+       
+   }
+  .imagen-principal{
+   object-fit: cover;
+   height: 500px;
+   position: relative;
+   left: 30%;
+   bottom: 40%;
+   @include responsive(500px){
+       width: 350px;
+       height:300px;
+       top: 10%;
+       left: 15%;
+   };
+
+   @include responsive(800px){
+       width: 350px;
+       height: 300px;
+       top: 10%;
+   }
    
-      
-      
+  }
      
-   
-
-   & h1{
-        font-size: 2rem;
-        text-align: center;
-        color:$color-texto-principal;
-        margin: 2rem;
-        font-weight: 800;
-    }
-
-
-   
-   
-
-    //HTML nosotros
+     
     
-    .contenedor-texto{
+  
+
+  & h1{
+       font-size: 2rem;
+       text-align: center;
+       color:$color-texto-principal;
+       margin: 2rem;
+       font-weight: 800;
+   }
+
+
+  
+  
+
+   //HTML nosotros
+   
+   .contenedor-texto{
+      
+       margin: 4rem;
+      
+       h1{
+           font-size: 2rem;
+           font-weight: 800;
+       }
+       p{
+           font-size: 1.2rem;
+           
+       }
+   }
+
+   .button{
+       font-size: 1rem;
+       color: $color-texto-principal;
+           padding: 3rem;
        
-        margin: 4rem;
+       &__color{
+           
+           @extend %border;
+       }
        
-        h1{
-            font-size: 2rem;
-            font-weight: 800;
-        }
-        p{
-            font-size: 1.2rem;
-            
-        }
-    }
-
-    .button{
-        font-size: 1rem;
-        color: $color-texto-principal;
-            padding: 3rem;
-        
-        &__color{
-            
-            @extend %border;
-        }
-        
-    }
+   }
 
 
 
+
+
+
+   // HTML productos
+  
+   .productos{
+
+
+       
+
+       &__contenedor{
+           text-align: center;
+
+               h1{
+                   font-weight: 800;
+                   font-size: 2rem;
+               }
+       }
+
+       &__orden{
+           
+           display: inline-block;
+           text-align: justify;
+           align-items: end;
+           color: $color-texto-principal;
+           padding: 1rem;
+
+       }
+   }
+   
+
+
+   
+
+
+   // HTML CONTACTO
  
 
-
-    // HTML productos
-
-
-  
    
-    .productos{
 
+   .contacto{
+       
+     
+                    &__container{
+                       height: 50vh;
+                       display: flex ;
+                       flex-direction: row;
+                       justify-content: center;
+                       align-items: center;
+                       color: $color-texto-principal;
 
-        
-
-        &__contenedor{
-            text-align: center;
-
-                h1{
-                    font-weight: 800;
-                    font-size: 2rem;
-                }
-        }
-
-        &__orden{
-            
-            display: inline-block;
-            text-align: justify;
-            align-items: end;
-            color: $color-texto-principal;
-            padding: 1rem;
-
-        }
-    }
-    
-
-
-    .card img{
-        object-fit: cover;
-    }
-
-
-    // HTML CONTACTO
-  
+                           legend{
+                               margin: 10px 0;
+                           }
+                       }
+       
+                   &__nombre{
+                   margin: 20px 0px;
+                       }
 
     
-
-    .contacto{
-        
-      
-                     &__container{
-                       
-                        height: 65vh;
-                        display: flex ;
-                        flex-direction: row;
-                        justify-content: center;
-                        align-items: center;
-                        color: $color-texto-principal;
-
-                            legend{
-                                margin: 10px 0;
-                        
-                            }
-                        }
-        
-                    &__nombre{
+                    &__email{
                     margin: 20px 0px;
-                        }
 
-     
-                     &__email{
-                     margin: 20px 0px;
+                        } 
 
-                         } 
+                   &__botones{
+                       text-align: center;
+                       input{
+                           @extend %border;
+                       }
+                       
+                   }
+    
 
-                    &__botones{
-                        text-align: center;
-                        input{
-                            @extend %border;
-                        }
-                        
-                    }
-     
+      
 
        
-
-        
-    
-        
-        }
- 
-  /*HTML Sucursales*/ 
-
-  
    
-  .contenedor-sucursales {
-    
-    @include grid(2, 20px);
-  }
-  
-  .tienda {
-    text-align: center;
+       
+       }
 
-
-    iframe{
-        width: 300px;
-        height: 300px;
-    }
-  }
-  
-  
+ /*HTML Sucursales*/ 
 
  
+  
+ .contenedor-sucursales {
+   
+   @include grid(2, 20px);
+ }
+ 
+ .tienda {
+   text-align: center;
+
+
+   iframe{
+       width: 300px;
+       height: 300px;
+   }
+ }
+ 
+ 
+
+
 
 
 }
