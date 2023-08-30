@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "nombre": "Percha de madera",
+    "precio": 599,
+    "descripcion": "Percha de madera importada",
+    "img": "../img/prod02.jpg",
+    "cantidad":1
+  },
+  {
+    "id": 2,
+    "nombre": "Percha de madera",
+    "precio": 650,
+    "descripcion": "Percha de madera importada",
+    "img": "../img/prod02.jpg",
+    "cantidad":1
+  },
+  {
+    "id": 3,
+    "nombre": "Percha de madera",
+    "precio": 700,
+    "descripcion": "Percha de madera importada",
+    "img": "../img/prod03.jpg",
+    "cantidad":1
+  }
+]
+
+
+
+
+

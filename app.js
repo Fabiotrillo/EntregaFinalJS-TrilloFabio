@@ -9,18 +9,6 @@ class Producto {
         this.img = img;
         this.cantidad = 1;
     }
-    aumentarCantidad(){
-        this.cantidad++
-    }
-    disminuirCantidad(){
-        if(this.cantidad > 1){
-            this.cantidad--
-            return true
-        }else{
-            return false
-        }
-        
-    }
 }
 
 //CARRITO
@@ -46,8 +34,8 @@ class Carrito {
         let existeElProducto = -this.listaCarrito.some(producto => producto.id == productoAgregar.id )
 
         if(existeElProducto){
-            let producto = this.listaCarrito.find(producto => producto.id == productoAgregar.id)
-            producto.cantidad++
+            let productoEncarrito = this.listaCarrito.find(producto => producto.id == productoAgregar.id)
+            productoEncarrito.cantidad++
         }else{
             this.listaCarrito.push(productoAgregar);
         }
@@ -62,6 +50,7 @@ class Carrito {
         this.guardarEnStorage();
         this.mostrarProductos();
     }
+    
 
     mostrarProductos() {
         
@@ -87,6 +76,7 @@ class Carrito {
 
         //EVENTOS ELIMINAR Y AUMENTAR/DISMINUIR CANTIDAD
         this.listaCarrito.forEach(producto => {
+             let finalizarCompra = document.getElementById(`finalizar_compra`)   
              let btn_eliminar = document.getElementById(`eliminar-${producto.id}`);
              let btn_plus =document.getElementById(`plus-${producto.id}`);
              let btn_minus = document.getElementById(`minus-${producto.id}`);
@@ -96,22 +86,42 @@ class Carrito {
             });
             
             btn_plus.addEventListener("click", () => {
-                producto.aumentarCantidad()
+                producto.cantidad++
                 this.mostrarProductos()
             })
 
             btn_minus.addEventListener("click", ()=>{
-               if(producto.disminuirCantidad()){ 
+               if(producto.cantidad--){ 
                 this.mostrarProductos()
             }
             })
+            finalizarCompra.addEventListener("click", () => {
+                    this.finalizarCompra();
+            });
+            
         })
         
-        total.innerHTML = `Total $${this.calcularTotal()}`;
+        total.innerHTML = `Precio total: $${this.calcularTotal()}`;
     }
     calcularTotal(){
         return this.listaCarrito.reduce((acumulador, producto) => acumulador + producto.precio * producto.cantidad, 0)
     }
+
+    finalizarCompra(){
+        return Swal.fire({
+            position: 'center-center',
+            icon: 'success',
+            title: 'Su compra ha sido realizada con Exito!',
+            showConfirmButton: false,
+            timer: 2000
+          }).then(() => {
+            this.listaCarrito = []; 
+            this.guardarEnStorage();
+            this.mostrarProductos();
+        });
+    }
+
+    
 }
 
 //PRODUCTO CONTROLLER
@@ -121,9 +131,18 @@ class ProductoController {
         this.listaProductos = []
     }
 
-    agregar(producto) {
-        this.listaProductos.push(producto)
+
+    //SIMULADOR API, OBTENGO PRODUCTOS
+    async obtenerProductosDesdeAPI() {
+
+            const resp = await fetch('../simulador_api.json');
+            const data = await resp.json();
+            this.listaProductos = data;
+            this.mostrarProductos();
+       
     }
+
+
 
     mostrarProductos() {
         let instancia__Productos = document.getElementById(`instancia__Productos`);
@@ -153,13 +172,8 @@ class ProductoController {
             })
         })
     }
+    
 }
-
-//INSTANCIAS DE PRODUCTO
-
-const producto01 = new Producto(1, "Percha de madera", 599, "Percha de madera importada", "../img/prod02.jpg")
-const producto02 = new Producto(2, "Percha de madera", 650, "Percha de madera importada", "../img/prod02.jpg")
-const producto03 = new Producto(3, "Percha de madera", 700, "Percha de madera importada", "../img/prod03.jpg")
 
 
 //INSTANCIA DE CARRITO
@@ -170,9 +184,5 @@ carrito.mostrarProductos()
 //INSTANCIA DE PRODUCTOCONTROLLER
 
 const Controlador_Producto = new ProductoController();
-
-Controlador_Producto.agregar(producto01)
-Controlador_Producto.agregar(producto02)
-Controlador_Producto.agregar(producto03)
-
-Controlador_Producto.mostrarProductos();
+//Muestro productos desde la API
+Controlador_Producto.obtenerProductosDesdeAPI();
